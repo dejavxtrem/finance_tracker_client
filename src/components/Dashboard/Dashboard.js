@@ -1,10 +1,9 @@
+
 import React from 'react';
+import HomeComponent from '../home/Homecontent'
+import { Link, Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import "./Dashboard.css"
-import { Layout, Menu } from 'antd';
-import { Row, Col, Divider } from 'antd';
-import { Card } from 'antd';
-import TableComponent from '../table/Table'
-import CardComponent from '../cardcontent/Cardcomponent'
 
 
 import {
@@ -14,6 +13,27 @@ import {
   VideoCameraOutlined,
   UploadOutlined,
 } from '@ant-design/icons';
+
+import { Layout, Menu, } from 'antd';
+
+//import { Card } from 'antd';
+//import TableComponent from '../table/Table'
+//import CardComponent from '../cardcontent/Cardcomponent'
+import BankInfo from '../bankinformation/BankAccount'
+import CreditCardInfo from '../creditcardinfo/Creditcard'
+import ExpensesInfo from '../expenses/Expenses'
+//import CardRowOne from '../Cardrowone';
+
+
+
+{/* React-Router */}
+
+
+
+
+
+
+
 
 
 {/* Content Stling */}
@@ -29,6 +49,8 @@ const gridStyle = {
 class SiderDemo extends React.Component {
   state = {
     collapsed: false,
+    isempty: true
+
   };
 
   toggle = () => {
@@ -37,26 +59,47 @@ class SiderDemo extends React.Component {
     });
   };
 
+  componentWillMount =() => {
+    this.hideCompo()
+  }
+
+  hideCompo = () => {
+     this.setState({
+       isempty: !this.state.isempty
+     })
+    
+
+  }
+
+  reloadPage = () => {
+     
+  }
+
   render() {
     return (
       <Layout className="sidelayout">
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" icon={<UserOutlined />}>
-              Home
+          <Menu theme="dark" mode="inline" SelectedKeys={['1']}>
+            <Menu.Item key="/" icon={<UserOutlined />}>
+            <Link to="/home" className='colorlink'>Home</Link>
             </Menu.Item>
-            <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-              Banks
+
+            <Menu.Item key="/bank" icon={<VideoCameraOutlined />} >
+            <Link to="/bank" className='colorlink'>Bank</Link>
             </Menu.Item>
-            <Menu.Item key="3" icon={<UploadOutlined />}>
-              Credit Card
+            <Menu.Item key="/creditcard" icon={<UploadOutlined />} >
+            <Link to="/creditcard" className='colorlink'>Creditcard</Link>
             </Menu.Item>
-            <Menu.Item key="4" icon={<UploadOutlined />}>
-              Expenses
+            <Menu.Item key="/expense" icon={<UploadOutlined />} >
+            <Link to="/expense" className='colorlink'>Expenses</Link>
             </Menu.Item>
           </Menu>
         </Sider>
+
+
+
+        
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }}>
             {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
@@ -72,60 +115,25 @@ class SiderDemo extends React.Component {
               minHeight: 280,
             }}
           >
-            {/* Row One for content details */}
-            <Row gutter={32}>
-              <Col span={8}>
-                <div>
-                <Card title="Card title" bordered={false} style={{ width: 300 }}>
-                    <p>Card content</p>
-                   <p>Card content</p>
-                    <p>Card content</p>
-                </Card>
-                </div>
-              </Col>
+            {/* router */}
+            <Switch>
+            <Route   exact path="/home" render={(props) => <HomeComponent {...props}/> } />
+            <Route   path="/bank" render={(props) => <BankInfo  {...props}/> } />
+            <Route   path="/creditcard" render={(props) => <CreditCardInfo  {...props}/> } />
+            <Route   path="/expense" render={(props) => < ExpensesInfo {...props}/> } />    
+            </Switch>
 
-              <Col span={8}>
-                <div>
-                <Card title="Card title" bordered={false} style={{ width: 300 }}>
-                    <p>Card content</p>
-                   <p>Card content</p>
-                    <p>Card content</p>
-                </Card>
-                </div>
-              </Col>
-
-
-              <Col span={8}>
-                <div>
-                <Card title="Card title" bordered={false} style={{ width: 300 }}>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                    <p>Card content</p>
-                </Card>
-                </div>
-              </Col>
-            
-
-              
-  
-            </Row>
-
-            <Divider orientation="left" style={{ color: '#333', fontWeight: 'normal' }}>
-            </Divider>
-           {/* Table content for stocks price */}
-           <TableComponent/>
-            {/* Card content for stocks price */}
-            <Divider orientation="left" style={{ color: '#333', fontWeight: 'normal' }}>
-            </Divider>
-            <CardComponent/>
           
-
+          
+          
+            
           </Content>
         </Layout>
       </Layout>
+
     );
   }
 }
 
 
-export default SiderDemo  
+export default SiderDemo
