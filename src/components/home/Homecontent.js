@@ -13,8 +13,8 @@ class HomeComponent extends React.Component
         return (
         
                     <Content>
-                        
-                    <CardRowOne/>
+                    
+                    <CardRowOne stockData ={this.props.stockData} microData ={this.props.microData} googleData={this.props.googleData}/>
                     <Divider orientation="left" style={{ color: '#333', fontWeight: 'normal' }}>
                     </Divider>
                     <TableComponent/>

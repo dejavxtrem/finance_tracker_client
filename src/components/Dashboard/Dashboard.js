@@ -53,27 +53,27 @@ class SiderDemo extends React.Component {
 
   };
 
-  toggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  };
+  // toggle = () => {
+  //   this.setState({
+  //     collapsed: !this.state.collapsed,
+  //   });
+  // };
 
-  componentWillMount =() => {
-    this.hideCompo()
-  }
+  // componentWillMount =() => {
+  //   this.hideCompo()
+  // }
 
-  hideCompo = () => {
-     this.setState({
-       isempty: !this.state.isempty
-     })
+  // hideCompo = () => {
+  //    this.setState({
+  //      isempty: !this.state.isempty
+  //    })
     
 
-  }
+  // }
 
-  reloadPage = () => {
+  // reloadPage = () => {
      
-  }
+  // }
 
   render() {
     return (
@@ -117,7 +117,7 @@ class SiderDemo extends React.Component {
           >
             {/* router */}
             <Switch>
-            <Route   exact path="/home" render={(props) => <HomeComponent {...props}/> } />
+            <Route   exact path="/home" render={(props) => <HomeComponent {...props} stockData ={this.props.stockData} microData ={this.props.microData} googleData={this.props.googleData}/> } />
             <Route   path="/bank" render={(props) => <BankInfo  {...props}/> } />
             <Route   path="/creditcard" render={(props) => <CreditCardInfo  {...props}/> } />
             <Route   path="/expense" render={(props) => < ExpensesInfo {...props}/> } />    
