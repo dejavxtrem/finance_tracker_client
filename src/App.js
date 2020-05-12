@@ -12,13 +12,17 @@ class App extends React.Component {
   state = {
     amazonDetails: {},
     microsoftDetails: {},
-    googleDetails: {}
+    googleDetails: {},
+    forexDetails: [...Array(3).fill({...Object})],
+    cryptoDetails: [...Array(4).fill({...Object})]
   }
   
   componentDidMount = () => {
   this.getStockData()
   this.getTwitterData()
   this.getGoogleData()
+  this.getForexExchange()
+  this.getCrypto()
   }
   
 // // getAllData = () => {
@@ -70,9 +74,40 @@ class App extends React.Component {
       .then(parsedData => this.setState({googleDetails: parsedData}), err => console.log('parsedData', err))
       }
 
+
+    //Forest API call
+    getForexExchange = () => {
+      fetch('https://cloud.iexapis.com/stable/fx/latest?symbols=USDCAD,USDGBP,USDJPY,USDEUR&token=pk_f8e567e3a9c048beb52efb088dffe9cf', {
+        "method": "GET",
+        }).then(data => data.json(), err => console.log(err))
+        .then(parsedData => this.setState({forexDetails: parsedData}), err => console.log('parsedData', err))    
+    }
+
+  //cryptocurrency API call
+  getCrypto = () => {
+    let btcCall = fetch('https://cloud.iexapis.com/stable/crypto/BTCUSD/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
+    let ethCall = fetch('https://cloud.iexapis.com/stable/crypto/ETHUSD/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
+    let ltcCall = fetch('https://cloud.iexapis.com/stable/crypto/LTCUSD/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
+    let etcCall = fetch('https://cloud.iexapis.com/stable/crypto/ZECBTC/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
+    // let bchCall =  fetch('https://cloud.iexapis.com/stable/crypto/BCHUSD/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
+    // let xrpCall = fetch('https://cloud.iexapis.com/stable/crypto/XRPTUSD/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
+    // let etcBtc =  fetch('https://cloud.iexapis.com/stable/crypto/ETHBTC/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
+
+    Promise.all([btcCall, ethCall, ltcCall, etcCall])
+    .then(values => Promise.all(values.map(value => value.json())))
+    .then(finalVals => {
+      this.setState({cryptoDetails: finalVals })
+      // let firstAPIResp = finalVals[0];
+      // let secondAPIResp = finalVals[1];
+      // console.log(firstAPIResp)
+      // console.log(secondAPIResp)
+    });
+  }
+
+
     render () {
       return (
-          <SiderDemo stockData={this.state.amazonDetails} microData={this.state.microsoftDetails}  googleData={this.state.googleDetails}/>
+          <SiderDemo stockData={this.state.amazonDetails} microData={this.state.microsoftDetails}  googleData={this.state.googleDetails} forexData={this.state.forexDetails} cryptoData={this.state.cryptoDetails}/>
       )
 
     }

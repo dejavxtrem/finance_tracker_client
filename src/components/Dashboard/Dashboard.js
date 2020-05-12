@@ -117,7 +117,7 @@ class SiderDemo extends React.Component {
           >
             {/* router */}
             <Switch>
-            <Route   exact path="/home" render={(props) => <HomeComponent {...props} stockData ={this.props.stockData} microData ={this.props.microData} googleData={this.props.googleData}/> } />
+            <Route    path="/home" render={(props) => <HomeComponent {...props} stockData ={this.props.stockData} microData ={this.props.microData} googleData={this.props.googleData} forexData={this.props.forexData} cryptoData={this.props.cryptoData}/> } />
             <Route   path="/bank" render={(props) => <BankInfo  {...props}/> } />
             <Route   path="/creditcard" render={(props) => <CreditCardInfo  {...props}/> } />
             <Route   path="/expense" render={(props) => < ExpensesInfo {...props}/> } />    

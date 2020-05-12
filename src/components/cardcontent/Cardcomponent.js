@@ -9,16 +9,14 @@ const gridStyle = {
   class CardComponent extends React.Component {
       render () {
             return (
-                <Card title="Card Title">
-                    <Card.Grid style={gridStyle}>Content</Card.Grid>
-                    <Card.Grid hoverable={false} style={gridStyle}>
-                    Content
+                <Card title="CrptoCurrency">
+                    <Card.Grid style={gridStyle}>{this.props.cryptoData[0].price}: {this.props.cryptoData[0].symbol}</Card.Grid>
+                    <Card.Grid hoverable={true} style={gridStyle}>
+                    {this.props.cryptoData[1].price}: {this.props.cryptoData[1].symbol}
                     </Card.Grid>
-                    <Card.Grid style={gridStyle}>Content</Card.Grid>
-                    <Card.Grid style={gridStyle}>Content</Card.Grid>
-                    <Card.Grid style={gridStyle}>Content</Card.Grid>
-                    <Card.Grid style={gridStyle}>Content</Card.Grid>
-                    <Card.Grid style={gridStyle}>Content</Card.Grid>
+                    <Card.Grid style={gridStyle}>{this.props.cryptoData[2].price}: {this.props.cryptoData[2].symbol}</Card.Grid>
+                    <Card.Grid style={gridStyle}>{this.props.cryptoData[3].price}: {this.props.cryptoData[3].symbol}</Card.Grid>
+
                 </Card>
             )
       }

@@ -17,10 +17,10 @@ class HomeComponent extends React.Component
                     <CardRowOne stockData ={this.props.stockData} microData ={this.props.microData} googleData={this.props.googleData}/>
                     <Divider orientation="left" style={{ color: '#333', fontWeight: 'normal' }}>
                     </Divider>
-                    <TableComponent/>
+                    <TableComponent forexData={this.props.forexData}/>
                     <Divider orientation="left" style={{ color: '#333', fontWeight: 'normal' }}>
                     </Divider>
-                    <CardComponent/>
+                    <CardComponent cryptoData={this.props.cryptoData}/>
                     
                     </Content>
     
