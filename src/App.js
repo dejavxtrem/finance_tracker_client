@@ -4,7 +4,7 @@ import './App.css';
 import SiderDemo from './components/Dashboard/Dashboard';
 import CardRowOne from './components/Cardrowone'
 //import MyProvider from './MyProvider';
-
+let apiKEY = process.env.REACT_APP_IEXCLOUD_API_KEY
 
 
 class App extends React.Component {
@@ -54,21 +54,21 @@ class App extends React.Component {
 
 
   getStockData = () => {
-  fetch('https://cloud.iexapis.com/stable/stock/AMZN/quote?token=pk_f8e567e3a9c048beb52efb088dffe9cf', {
+  fetch(`https://cloud.iexapis.com/stable/stock/AMZN/quote?token=${apiKEY}`, {
   "method": "GET",
   }).then(data => data.json(), err => console.log(err))
   .then(parsedData => this.setState({amazonDetails: parsedData}), err => console.log('parsedData', err))
   }
   
   getTwitterData = () => {
-    fetch('https://cloud.iexapis.com/stable/stock/MSFT/quote?token=pk_f8e567e3a9c048beb52efb088dffe9cf', {
+    fetch(`https://cloud.iexapis.com/stable/stock/MSFT/quote?token=${apiKEY}`, {
     "method": "GET",
     }).then(data => data.json(), err => console.log(err))
     .then(parsedData => this.setState({microsoftDetails: parsedData}), err => console.log('parsedData', err))
     }
   
     getGoogleData = () => {
-      fetch('https://cloud.iexapis.com/stable/stock/GOOGL/quote?token=pk_f8e567e3a9c048beb52efb088dffe9cf', {
+      fetch(`https://cloud.iexapis.com/stable/stock/GOOGL/quote?token=${apiKEY}`, {
       "method": "GET",
       }).then(data => data.json(), err => console.log(err))
       .then(parsedData => this.setState({googleDetails: parsedData}), err => console.log('parsedData', err))
@@ -77,7 +77,7 @@ class App extends React.Component {
 
     //Forest API call
     getForexExchange = () => {
-      fetch('https://cloud.iexapis.com/stable/fx/latest?symbols=USDCAD,USDGBP,USDJPY,USDEUR&token=pk_f8e567e3a9c048beb52efb088dffe9cf', {
+      fetch(`https://cloud.iexapis.com/stable/fx/latest?symbols=USDCAD,USDGBP,USDJPY,USDEUR&token=${apiKEY}`, {
         "method": "GET",
         }).then(data => data.json(), err => console.log(err))
         .then(parsedData => this.setState({forexDetails: parsedData}), err => console.log('parsedData', err))    
@@ -85,10 +85,10 @@ class App extends React.Component {
 
   //cryptocurrency API call
   getCrypto = () => {
-    let btcCall = fetch('https://cloud.iexapis.com/stable/crypto/BTCUSD/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
-    let ethCall = fetch('https://cloud.iexapis.com/stable/crypto/ETHUSD/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
-    let ltcCall = fetch('https://cloud.iexapis.com/stable/crypto/LTCUSD/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
-    let etcCall = fetch('https://cloud.iexapis.com/stable/crypto/ZECBTC/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
+    let btcCall = fetch(`https://cloud.iexapis.com/stable/crypto/BTCUSD/price?token=${apiKEY}`)
+    let ethCall = fetch(`https://cloud.iexapis.com/stable/crypto/ETHUSD/price?token=${apiKEY}`)
+    let ltcCall = fetch(`https://cloud.iexapis.com/stable/crypto/LTCUSD/price?token=${apiKEY}`)
+    let etcCall = fetch(`https://cloud.iexapis.com/stable/crypto/ZECBTC/price?token=${apiKEY}`)
     // let bchCall =  fetch('https://cloud.iexapis.com/stable/crypto/BCHUSD/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
     // let xrpCall = fetch('https://cloud.iexapis.com/stable/crypto/XRPTUSD/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
     // let etcBtc =  fetch('https://cloud.iexapis.com/stable/crypto/ETHBTC/price?token=pk_f8e567e3a9c048beb52efb088dffe9cf')
