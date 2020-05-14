@@ -1,0 +1,13 @@
+@import '~antd/dist/antd.css';
+
+
+
+
+
+.cardtitle {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    background-color:#0050b3;
+    color: whitesmoke
+    
+} 

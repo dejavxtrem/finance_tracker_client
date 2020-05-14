@@ -1,90 +1,78 @@
 import React from 'react';
 import { Table, Tag, Space } from 'antd';
+import { Spin } from 'antd';
+import './creditcard.css'
 
 
 class CreditCardInfo extends React.Component {
- 
-
- columns = [
-        {
-          title: 'Name',
-          dataIndex: 'name',
-          key: 'name',
-          render: text => <a>{text}</a>,
-        },
-        {
-          title: 'Age',
-          dataIndex: 'age',
-          key: 'age',
-        },
-        {
-          title: 'Address',
-          dataIndex: 'address',
-          key: 'address',
-        },
-        {
-          title: 'Tags',
-          key: 'tags',
-          dataIndex: 'tags',
-          render: tags => (
-            <>
-              {tags.map(tag => {
-                let color = tag.length > 5 ? 'geekblue' : 'green';
-                if (tag === 'loser') {
-                  color = 'volcano';
-                }
-                return (
-                  <Tag color={color} key={tag}>
-                    {tag.toUpperCase()}
-                  </Tag>
-                );
-              })}
-            </>
-          ),
-        },
-        {
-          title: 'Action',
-          key: 'action',
-          render: (text, record) => (
-            <Space size="middle">
-              <a>Invite {record.name}</a>
-              <a>Delete</a>
-            </Space>
-          ),
-        },
-      ];
-      
- data = [
-        {
-          key: '1',
-          name: 'Dejavu James',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
-        },
-        {
-          key: '2',
-          name: 'John Doe',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
-        },
-        {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
-        },
-      ];
+  columns = [
+    {
+      title: 'Creditcard',
+      dataIndex: 'Creditcard',
+      render: text => <a>{text}</a>,
+      className: 'tablehead'
+    },
+    {
+      title: 'Merchant',
+      dataIndex: 'Merchant',
+      render: text => <a>{text}</a>,
+      className: 'tablehead'
+    },
+    {
+      title: 'Amount $',
+      dataIndex: 'Amount',
+      render: text => <a>{text}</a>,
+      className: 'tablehead'
+    },
+    {
+      title: 'Number',
+      dataIndex: 'Number',
+      render: text => <a>{text}</a>,
+      className: 'tablehead'
+    }
+  ];
       
     render () {
-      console.log(this.props)
-        return (
-            <Table columns={this.columns} dataSource={this.data} />
-        )
-    }
-}
+      console.log(this.props.userData)
+      let dataSource = []
+      if (this.props.userData.creditcards) {
+        dataSource = [
+          {
+            key: '1',
+            Creditcard: this.props.userData.creditcards[0].creditcard_company,
+            Merchant: this.props.userData.creditcards[0].merchant_name,
+            Amount: this.props.userData.creditcards[0].amount,
+            Number: this.props.userData.creditcards[0].creditcard_number,
+          },
+          {
+            key: '2',
+            Creditcard: this.props.userData.creditcards[1].creditcard_company,
+            Merchant: this.props.userData.creditcards[1].merchant_name,
+            Amount: this.props.userData.creditcards[1].amount,
+            Number: this.props.userData.creditcards[1].creditcard_number,
+          },
+          {
+            Creditcard: this.props.userData.creditcards[2].creditcard_company,
+            Merchant: this.props.userData.creditcards[2].merchant_name,
+            Amount: this.props.userData.creditcards[2].amount,
+            Number: this.props.userData.creditcards[2].creditcard_number,
+          },
+          {
+            Creditcard: this.props.userData.creditcards[3].creditcard_company,
+            Merchant: this.props.userData.creditcards[3].merchant_name,
+            Amount: this.props.userData.creditcards[3].amount,
+            Number: this.props.userData.creditcards[3].creditcard_number,
+          }
+        ]
+      }
 
+        return (
+          <>
+            <Table columns={this.columns}  dataSource={dataSource} size="middle" loading={false} pagination={false}  className="creditcardcontent"/>
+          </>
+        )
+    
+}
+}
 
 export default CreditCardInfo;

@@ -4,6 +4,7 @@ import CardRowOne from '../Cardrowone';
 import TableComponent from '../table/Table';
 import CardComponent from '../cardcontent/Cardcomponent';
 import {Divider } from 'antd';
+import './homecomponent.css'
 const { Header, Sider, Content } = Layout;
 
 

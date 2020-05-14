@@ -1,87 +1,80 @@
 import React from 'react';
 import { Table, Tag, Space } from 'antd';
+import './expenses.css';
 
 
 class ExpensesInfo extends React.Component {
  
 
  columns = [
-        {
-          title: 'Name',
-          dataIndex: 'name',
-          key: 'name',
-          render: text => <a>{text}</a>,
-        },
-        {
-          title: 'Age',
-          dataIndex: 'age',
-          key: 'age',
-        },
-        {
-          title: 'Address',
-          dataIndex: 'address',
-          key: 'address',
-        },
-        {
-          title: 'Tags',
-          key: 'tags',
-          dataIndex: 'tags',
-          render: tags => (
-            <>
-              {tags.map(tag => {
-                let color = tag.length > 5 ? 'geekblue' : 'green';
-                if (tag === 'loser') {
-                  color = 'volcano';
-                }
-                return (
-                  <Tag color={color} key={tag}>
-                    {tag.toUpperCase()}
-                  </Tag>
-                );
-              })}
-            </>
-          ),
-        },
-        {
-          title: 'Action',
-          key: 'action',
-          render: (text, record) => (
-            <Space size="middle">
-              <a>Invite {record.name}</a>
-              <a>Delete</a>
-            </Space>
-          ),
-        },
+          {
+            title: 'Bill',
+            dataIndex: 'Bill',
+            render: text => <a>{text}</a>,
+            className: 'tablehead'
+          },
+          {
+            title: 'Company',
+            dataIndex: 'Company',
+            render: text => <a>{text}</a>,
+            className: 'tablehead'
+          },
+          {
+            title: 'Amount $',
+            dataIndex: 'Amount',
+            render: text => <a>{text}</a>,
+            className: 'tablehead'
+          },
+          {
+            title: 'DueDate',
+            dataIndex: 'DueDate',
+            render: text => <a>{text}</a>,
+            className: 'tablehead'
+          }
       ];
       
- data = [
-        {
-          key: '1',
-          name: 'Harry POtter',
-          age: 32,
-          address: 'New York No. 1 Lake Park',
-          tags: ['nice', 'developer'],
-        },
-        {
-          key: '2',
-          name: 'James Hollowway',
-          age: 42,
-          address: 'London No. 1 Lake Park',
-          tags: ['loser'],
-        },
-        {
-          key: '3',
-          name: 'Joe Black',
-          age: 32,
-          address: 'Sidney No. 1 Lake Park',
-          tags: ['cool', 'teacher'],
-        },
-      ];
       
     render () {
-      console.log(this.props)
+     // console.log(this.props)
+      let dataSource = []
+      if (this.props.userData.creditcards) {
+        dataSource = [
+          {
+            key: '1',
+            Bill: this.props.userData.billexpenses[0].billtype,
+            Company: this.props.userData.billexpenses[0].companyname,
+            Amount: this.props.userData.billexpenses[0].amount,
+            DueDate: this.props.userData.billexpenses[0].due_date,
+          },
+          {
+            key: '2',
+            Bill: this.props.userData.billexpenses[1].billtype,
+            Company: this.props.userData.billexpenses[1].companyname,
+            Amount: this.props.userData.billexpenses[1].amount,
+            DueDate: this.props.userData.billexpenses[1].due_date,
+          },
+          {
+            Bill: this.props.userData.billexpenses[2].billtype,
+            Company: this.props.userData.billexpenses[2].companyname,
+            Amount: this.props.userData.billexpenses[2].amount,
+            DueDate: this.props.userData.billexpenses[2].due_date,
+          },
+          {
+            Bill: this.props.userData.billexpenses[3].billtype,
+            Company: this.props.userData.billexpenses[3].companyname,
+            Amount: this.props.userData.billexpenses[3].amount,
+            DueDate: this.props.userData.billexpenses[3].due_date,
+          },
+          {
+            Bill: this.props.userData.billexpenses[4].billtype,
+            Company: this.props.userData.billexpenses[4].companyname,
+            Amount: this.props.userData.billexpenses[4].amount,
+            DueDate: this.props.userData.billexpenses[4].due_date,
+          }
+        ]
+      }
         return (
-            <Table columns={this.columns} dataSource={this.data} />
+            <Table columns={this.columns} dataSource={dataSource} pagination={false} className="creditcardcontent"/>
         )
     }
 }

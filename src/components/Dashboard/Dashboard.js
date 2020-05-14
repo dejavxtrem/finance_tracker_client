@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 import "./Dashboard.css"
 
 
+
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -25,17 +26,6 @@ import ExpensesInfo from '../expenses/Expenses'
 //import CardRowOne from '../Cardrowone';
 
 
-
-{/* React-Router */}
-
-
-
-
-
-
-
-
-
 {/* Content Stling */}
 const { Header, Sider, Content } = Layout;
 const style = { background: '#0092ff', padding: '8px 0' };
@@ -49,31 +39,19 @@ const gridStyle = {
 class SiderDemo extends React.Component {
   state = {
     collapsed: false,
-    isempty: true
-
   };
 
-  // toggle = () => {
-  //   this.setState({
-  //     collapsed: !this.state.collapsed,
-  //   });
-  // };
 
-  // componentWillMount =() => {
-  //   this.hideCompo()
-  // }
 
-  // hideCompo = () => {
-  //    this.setState({
-  //      isempty: !this.state.isempty
-  //    })
-    
+  toggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  };
 
-  // }
+ 
 
-  // reloadPage = () => {
-     
-  // }
+
 
   render() {
     return (
@@ -96,16 +74,18 @@ class SiderDemo extends React.Component {
             </Menu.Item>
           </Menu>
         </Sider>
-
+        
 
 
         
-        <Layout className="site-layout">
+        <Layout >
+         
           <Header className="site-layout-background" style={{ padding: 0 }}>
             {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
               className: 'trigger',
               onClick: this.toggle,
             })}
+  
           </Header>
           <Content
             className="site-layout-background"
@@ -115,18 +95,15 @@ class SiderDemo extends React.Component {
               minHeight: 280,
             }}
           >
+           <h3>Welcome John Doe</h3>
             {/* router */}
             <Switch>
-            <Route    path="/home" render={(props) => <HomeComponent {...props} stockData ={this.props.stockData} microData ={this.props.microData} googleData={this.props.googleData} forexData={this.props.forexData} cryptoData={this.props.cryptoData}/> } />
-            <Route   path="/bank" render={(props) => <BankInfo  {...props}/> } />
-            <Route   path="/creditcard" render={(props) => <CreditCardInfo  {...props}/> } />
-            <Route   path="/expense" render={(props) => < ExpensesInfo {...props}/> } />    
+            <Route   exact path="/home" render={(props) => <HomeComponent {...props} stockData ={this.props.stockData} microData ={this.props.microData} googleData={this.props.googleData} forexData={this.props.forexData} cryptoData={this.props.cryptoData}/> } />
+            <Route   exact path="/bank" render={(props) => <BankInfo  {...props}    userData={this.props.userAccountData}  baseUrl={this.props.baseURL}    />   } />
+            <Route   exact path="/creditcard" render={(props) => <CreditCardInfo  {...props}    userData={this.props.userAccountData} /> } />
+            <Route   exact path="/expense" render={(props) => < ExpensesInfo {...props}    userData={this.props.userAccountData}/> } />    
             </Switch>
 
-          
-          
-          
-            
           </Content>
         </Layout>
       </Layout>

@@ -1,0 +1,8 @@
+@import '~antd/dist/antd.css';
+
+.tablecontent {
+    font-family: 'Libre Baskerville', serif;
+}
+.tablehead  {
+    font-weight: 700;
+}

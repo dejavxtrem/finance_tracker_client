@@ -1,0 +1,9 @@
+@import '~antd/dist/antd.css';
+
+
+.cryptodata {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    background-color:#1890ff;
+    color: whitesmoke
+}

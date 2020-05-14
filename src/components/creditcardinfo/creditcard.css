@@ -1,0 +1,10 @@
+@import '~antd/dist/antd.css';
+
+.creditcardcontent {
+    font-family: 'Libre Baskerville', serif;
+}
+
+
+.tablehead  {
+    font-weight: 700;
+}
