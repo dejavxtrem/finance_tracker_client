@@ -1,9 +1,5 @@
-@import '~antd/dist/antd.css';
-
-.tablecontent {
+.formclass {
+    margin-top: 55px;
     font-family: 'Libre Baskerville', serif;
-}
-.tablehead  {
     font-weight: 700;
 }
-

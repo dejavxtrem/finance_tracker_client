@@ -1,9 +1,7 @@
 @import '~antd/dist/antd.css';
 
-.tablecontent {
+.creditcss {
+    margin-top: 55px;
     font-family: 'Libre Baskerville', serif;
-}
-.tablehead  {
     font-weight: 700;
 }
-

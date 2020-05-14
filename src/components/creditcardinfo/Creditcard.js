@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, Tag, Space } from 'antd';
 import { Spin } from 'antd';
 import './creditcard.css'
+import CreditScore from '../CreditScore/Creditscore';
 
 
 class CreditCardInfo extends React.Component {
@@ -69,6 +70,7 @@ class CreditCardInfo extends React.Component {
         return (
           <>
             <Table columns={this.columns}  dataSource={dataSource} size="middle" loading={false} pagination={false}  className="creditcardcontent"/>
+            <CreditScore/>
           </>
         )
     

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Input, InputNumber, Button } from 'antd';
+import './newform.css'
 
 
 class NewForm extends React.Component {
@@ -41,7 +42,7 @@ class NewForm extends React.Component {
 
     render () {
         return (
-            <div>
+            <div className="formclass">
                   <Form onSubmit={this.handlesubmit} layout={this.vertical}>
                   <Form.Item label="Bankname">
                     <Input placeholder="bankname" id ="bankname" name="bankname" onChange={this.handleChange} value={this.state.bankname}/>
