@@ -8,11 +8,11 @@ let apiKEY = process.env.REACT_APP_IEXCLOUD_API_KEY
 
 let baseURL = process.env.REACT_APP_BASEURL
 
-if (process.env.NODE_ENV === 'development') {
-  baseURL = 'http://localhost:3000'
-} else {
-  baseURL = process.env.REACT_APP_BASEURL
-}
+// if (process.env.NODE_ENV === 'development') {
+//   baseURL = 'http://localhost:3000'
+// } else {
+//   baseURL = process.env.REACT_APP_BASEURL
+// }
 
 console.log('current base URL:', baseURL)
 
@@ -52,21 +52,21 @@ class App extends React.Component {
 
 //API Content
 //API BACKEND CALL
-getApiData = (user_id) => {
-  fetch('http://localhost:3000/users/' + user_id)
+getApiData = () => {
+  fetch(`${baseURL}/users/1`)
   .then(res => res.json())
   .then(jsonedAccount => this.setState({userData: jsonedAccount}))
   .catch(error => console.error(error))
 }
 
 
- handleAddrequest = (userData) => {
-      const newData = [...this.state.userData]
-      newData.unshift(userData)
-      this.setState({
+//  handleAddrequest = (userData) => {
+//       const newData = [...this.state.userData]
+//       newData.unshift(userData)
+//       this.setState({
 
-      })
- }
+//       })
+//  }
 
 
 

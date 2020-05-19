@@ -65,18 +65,6 @@ class BankInfo extends React.Component {
           Routing: this.props.userData.bankinformations[3].routingnumber,
           IBAN: this.props.userData.bankinformations[3].bankiban,
         },
-        { key: '5',
-          Bank: this.props.userData.bankinformations[4].bankname,
-          Account: this.props.userData.bankinformations[4].accountnumber,
-          Routing: this.props.userData.bankinformations[4].routingnumber,
-          IBAN: this.props.userData.bankinformations[4].bankiban,
-        },
-      { key: '7',
-        Bank: this.props.userData.bankinformations[6].bankname,
-        Account: this.props.userData.bankinformations[6].accountnumber,
-        Routing: this.props.userData.bankinformations[6].routingnumber,
-        IBAN: this.props.userData.bankinformations[6].bankiban,
-      },
       ]
     }
        

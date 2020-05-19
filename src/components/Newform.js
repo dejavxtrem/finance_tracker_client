@@ -16,8 +16,9 @@ class NewForm extends React.Component {
       }
 
       handleSubmit = (event)=> {
+        console.log('form submitted')
         event.preventDefault();
-        fetch(this.props.baseURL + "/users/1/bankinformations", {
+        fetch("http://localhost:3000/users/1/bankinformations", {
           method: "POST",
           body: JSON.stringify({ bankname: this.state.bankname,
         accountnumber: this.state.accountnumber, routingnumber: this.state.routingnumber,
@@ -26,16 +27,17 @@ class NewForm extends React.Component {
             "Content-Type": "application/json"
           }
         })
-          .then(res => res.json())
-          .then(resJson => {
-            this.props.handleAddHoliday(resJson);
-            this.setState({
-                bankname: "",
-                accountnumber: " ",
-                routingnumber: '',
-                bankiban: " "
-            });
-          })
+          .then(res => console.log(res.json()))
+          .then(console.log('hello'))
+          // .then(resJson => {
+          //   this.props.handleAddHoliday(resJson);
+          //   this.setState({
+          //       bankname: "",
+          //       accountnumber: " ",
+          //       routingnumber: '',
+          //       bankiban: " "
+          //   });
+          // })
           .catch(error => console.error({ Error: error }));
       };
 
@@ -43,7 +45,7 @@ class NewForm extends React.Component {
     render () {
         return (
             <div className="formclass">
-                  <Form onSubmit={this.handlesubmit} layout={this.vertical}>
+                  <form onSubmit={this.handlesubmit} layout={this.vertical}>
                   <Form.Item label="Bankname">
                     <Input placeholder="bankname" id ="bankname" name="bankname" onChange={this.handleChange} value={this.state.bankname}/>
                     </Form.Item>
@@ -59,7 +61,7 @@ class NewForm extends React.Component {
                     <Form.Item >
                         <Button type="primary">Submit</Button>
                     </Form.Item>
-                </Form>
+                </form>
             </div>
           
         )
