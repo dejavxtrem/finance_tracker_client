@@ -13,7 +13,7 @@ let baseURL = process.env.REACT_APP_BASEURL
 //   baseURL = process.env.REACT_APP_BASEURL
 // }
 
-//console.log('current base URL:', baseURL)
+console.log('current base URL:', baseURL)
 
 
 class App extends React.Component {
