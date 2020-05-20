@@ -1,7 +1,7 @@
-import React from 'react';;
-import './App.css';
+import React from 'react';
 import SiderDemo from './components/Dashboard/Dashboard';
-import CardRowOne from './components/Cardrowone'
+import './App.css';
+
 //import MyProvider from './MyProvider';
 let apiKEY = process.env.REACT_APP_IEXCLOUD_API_KEY
 
@@ -13,7 +13,7 @@ let baseURL = process.env.REACT_APP_BASEURL
 //   baseURL = process.env.REACT_APP_BASEURL
 // }
 
-console.log('current base URL:', baseURL)
+//console.log('current base URL:', baseURL)
 
 
 class App extends React.Component {
